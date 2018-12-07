@@ -16,12 +16,11 @@ public class SampleDao {
     
 
 	// update
-		@Transactional(isolation=Isolation.READ_COMMITTED,
-	            rollbackFor=RuntimeException.class,
+		@Transactional(rollbackFor=RuntimeException.class,
 	            propagation=Propagation.REQUIRED)
 	    public void update(){
-	    	jdbcTemplate.update("insert into sampletable(text) values('new dataXXX')");
-	    	List texts = jdbcTemplate.queryForList("select text from sampletable", String.class);
+	    	jdbcTemplate.update("insert into texttable(text) values('new data-spboot9')");
+	    	List texts = jdbcTemplate.queryForList("select text from texttable", String.class);
 	        System.out.println(texts);
 	        
 	        if(true) {
