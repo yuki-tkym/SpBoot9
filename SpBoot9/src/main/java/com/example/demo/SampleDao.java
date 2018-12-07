@@ -19,8 +19,11 @@ public class SampleDao {
 		@Transactional(rollbackFor=RuntimeException.class,
 	            propagation=Propagation.REQUIRED)
 	    public void update(){
-	    	jdbcTemplate.update("insert into texttable(text) values('new data-spboot9')");
-	    	List texts = jdbcTemplate.queryForList("select text from texttable", String.class);
+			String sql1 = "insert into texttable(text) values('new data-spboot9')";
+			String sql2 = "select text from texttable";
+	    	jdbcTemplate.update(sql1);
+	    	
+	    	List texts = jdbcTemplate.queryForList(sql2, String.class);
 	        System.out.println(texts);
 	        
 	        if(true) {
